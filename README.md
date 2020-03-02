@@ -1,4 +1,4 @@
 # Practicas DSD
 
-# Miguel Angel Castaño
+# Miguel Ángel Castaño
 # Noel Maneiro

@@ -38,11 +38,11 @@ end FullAdder_tb;
 architecture Behavioral of FullAdder_tb is
 
 component FullAdder is
-Port( a_in : in std_logic;
-          b_in : in std_logic;
-          c_in : in std_logic;
-          c_out : out std_logic;
-          s_out : out std_logic);
+Port( a_i : in std_logic;
+          b_i : in std_logic;
+          c_i : in std_logic;
+          c_o : out std_logic;
+          s_o : out std_logic);
 end component;
 --inputs
 signal a,b,c_entrada : STD_LOGIC := '0';
@@ -53,11 +53,11 @@ begin
 
 uut: FullAdder
   port map(
-   a_in =>a,
-   b_in =>b,
-   c_in =>c_entrada,
-   c_out =>c_salida,
-   s_out =>s);
+   a_i =>a,
+   b_i =>b,
+   c_i =>c_entrada,
+   c_o =>c_salida,
+   s_o =>s);
    
 stim_proc: process
 

@@ -56,7 +56,7 @@ PORT MAP ( a_i => a_i,
            b_i => b_i,
            s_o => s_o,
            c_o => c_o
-        );
+        ); 
 -- Stimulus process
 stim_proc: process
 begin

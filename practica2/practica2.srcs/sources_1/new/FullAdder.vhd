@@ -65,8 +65,8 @@ HalfAdder2 : HalfAdder
                   b_i=> c_i,
                   c_o=> salida_c2,
                   s_o=> s_o);
+                  
  c_o <= salida_c1 or salida_c2;
- 
  
 
 end Behavioral;

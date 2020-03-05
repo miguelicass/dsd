@@ -31,12 +31,13 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity FullAdderNbits is
-    port(a_i : in STD_LOGIC_VECTOR(3 downto 0);
-         b_i : in STD_LOGIC_VECTOR(3 downto 0);
-         c_i : in STD_LOGIC;
-         c_o : out STD_LOGIC;
-         s_o : out STD_LOGIC_VECTOR(3 downto 0)
+entity FullAdderNbits is generic (N : integer := 4);
+    port(a_i : in STD_LOGIC_VECTOR(N-1 downto 0);
+         b_ini : in STD_LOGIC_VECTOR(N-1 downto 0);
+         op_i : in STD_LOGIC;
+         c_out : out STD_LOGIC;
+         v_o : out STD_LOGIC;
+         s_o : out STD_LOGIC_VECTOR(N-1 downto 0)
          );
 end FullAdderNbits;
 
@@ -51,43 +52,45 @@ port(a_i : in STD_LOGIC;
 end component;
 
 --SALIDAS INTERMEDIAS
-signal c1_inter, c2_inter, c3_inter : STD_LOGIC;
+--signal c1_inter, c2_inter, c3_inter : STD_LOGIC;
+--Asignamos uno mas para inicializar la primera /c_inter(0)/ y guardar la ultima /c_out/
+signal c_inter :STD_LOGIC_VECTOR ( N downto 0);
+
+signal bxor_i : STD_LOGIC_VECTOR(N-1 downto 0);
 
 begin
 
-FullAdder1 : FullAdder
-port map( a_i => a_i(0),
-          b_i => b_i(0),
-          c_i => c_i,
-          c_o => c1_inter,
-          s_o => s_o(0)
-         );
-         
-FullAdder2 : FullAdder
-port map( a_i => a_i(1),
-          b_i => b_i(1),
-          c_i => c1_inter,
-          c_o => c2_inter,
-          s_o => s_o(1)
-          );  
-          
-FullAdder3 : FullAdder
-port map( a_i => a_i (2),
-          b_i => b_i (2),
-          c_i => c2_inter,
-          c_o => c3_inter,
-          s_o => s_o(2)
-         );
-         
-FullAdder4 : FullAdder
-port map(
- a_i => a_i (3),
-          b_i => b_i (3),
-          c_i => c3_inter,
-          c_o => c_o,
-          s_o => s_o(3)
-         );
+--FullAdder2 : FullAdder
+--port map( a_i => a_i(1),
+--          b_i => b_i(1),
+--          c_i => c1_inter,
+--          c_o => c2_inter,
+--          s_o => s_o(1)
+--          );  
     
+
+--Asignar op_i a la primera c_inter(j)
+c_inter(0) <= op_i;
+
+ArrayFullAdder: for j in 0 to N-1 generate 
+
+bxor_i(j) <= b_ini(j) xor op_i;
+
+FA : FullAdder
+port map( a_i => a_i(j),
+          b_i => bxor_i(j),
+          c_i => c_inter(j),
+          c_o => c_inter(j+1),
+          s_o => s_o(j)
+         );
+         
+end  generate;
+
+--Asignar c_out la ultima op_i
+c_out <= c_inter(N);
+
+v_o <= c_inter(N) xor c_inter(N-1) ;
+
 
 end Behavioral;
 

@@ -4,4 +4,14 @@ Running: /home/miguelan/Escritorio/VivadoWS/Vivado/2019.2/bin/unwrapped/lnx64.o/
 Using 8 slave threads.
 Starting static elaboration
 Completed static elaboration
-INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling architecture behavioral of entity xil_defaultlib.HalfAdder [halfadder_default]
+Compiling architecture behavioral of entity xil_defaultlib.FullAdder [fulladder_default]
+Compiling architecture behavioral of entity xil_defaultlib.FullAdderNbits [fulladdernbits_default]
+Compiling architecture behavioral of entity xil_defaultlib.fulladdernbits_tb
+Built simulation snapshot FullAdderNbits_tb_behav

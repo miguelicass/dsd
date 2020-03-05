@@ -1,0 +1,4 @@
+Running: xsim.dir/FullAdderNbits_behav/xsimk -simmode gui -wdb FullAdderNbits_behav.wdb -simrunnum 0 -socket 47513
+Design successfully loaded
+Design Loading Memory Usage: 43960 KB (Peak: 44080 KB)
+Design Loading CPU Usage: 10 ms

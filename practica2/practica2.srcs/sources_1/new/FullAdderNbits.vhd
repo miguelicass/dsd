@@ -31,7 +31,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity FullAdderNbits is generic (N : integer := 4);
+entity FullAdderNbits is generic (N : integer );--:= 4);
     port(a_i : in STD_LOGIC_VECTOR(N-1 downto 0);
          b_ini : in STD_LOGIC_VECTOR(N-1 downto 0);
          op_i : in STD_LOGIC;

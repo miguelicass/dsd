@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date: 05.03.2020 23:29:18
+-- Create Date: 06.03.2020 20:47:39
 -- Design Name: 
--- Module Name: DivFreq - Behavioral
+-- Module Name: Manager - Behavioral
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 
@@ -31,39 +31,19 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity DivFreq is generic (N : INTEGER );--:= 4);
-    port ( clk_i : in STD_LOGIC;
+entity Manager is generic (N : integer);--:= 4);
+    Port ( clk_i : in STD_LOGIC;
            rst_i : in STD_LOGIC;
-           freq_div_o : out STD_LOGIC);
-end DivFreq;
+           a_i : in STD_LOGIC_VECTOR(N-1 downto 0);
+           b_ini : in STD_LOGIC_VECTOR(N-1 downto 0);
+           op_i : in STD_LOGIC;
+           en_o : out STD_LOGIC;
+           leds_n_o : out  STD_LOGIC_VECTOR (7 downto 0)); 
+end Manager;
 
-architecture Behavioral of DivFreq is
- 
-signal counter : INTEGER;
+architecture Behavioral of Manager is
 
 begin
 
-
-
-process(clk_i,rst_i) 
-    begin
-
-      if (rst_i = '1') then 
-        counter <= 0;
-        freq_div_o <= '0';
-        
-      elsif (clk_i'event and clk_i='1') then    
-        if (counter = N-1 ) then 
-            freq_div_o <= '1';
-            counter <= 0;
-        else
-            counter <= counter+1;
-            freq_div_o <= '0';
-        end if;   
-         
-     end if;
-
-
-end process;
 
 end Behavioral;

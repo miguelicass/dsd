@@ -31,19 +31,101 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity Manager is generic (N : integer);--:= 4);
-    Port ( clk_i : in STD_LOGIC;
-           rst_i : in STD_LOGIC;
-           a_i : in STD_LOGIC_VECTOR(N-1 downto 0);
-           b_ini : in STD_LOGIC_VECTOR(N-1 downto 0);
-           op_i : in STD_LOGIC;
-           en_o : out STD_LOGIC;
-           leds_n_o : out  STD_LOGIC_VECTOR (7 downto 0)); 
+entity Manager is generic (N : integer := 4);
+    Port ( clk_m_i : in STD_LOGIC;
+           rst_m_i : in STD_LOGIC;
+           a_m_i : inout STD_LOGIC_VECTOR(N-1 downto 0);
+           b_m_i : inout STD_LOGIC_VECTOR(N-1 downto 0);
+           op_m_i : in STD_LOGIC;
+           en_m_o : out STD_LOGIC;
+           segments_m_o : out  STD_LOGIC_VECTOR (7 downto 0)); 
 end Manager;
 
 architecture Behavioral of Manager is
 
+
+component FullAdderNbits is generic (N : integer );--:= 4);
+    port(a_i : in STD_LOGIC_VECTOR(N-1 downto 0);
+         b_ini : in STD_LOGIC_VECTOR(N-1 downto 0);
+         op_i : in STD_LOGIC;
+         c_out : out STD_LOGIC;
+         v_o : out STD_LOGIC;
+         s_o : out STD_LOGIC_VECTOR(N-1 downto 0)
+         );
+end component;
+
+
+component DivFreq is generic (N : INTEGER );--:= 4);
+    port ( clk_i : in STD_LOGIC;
+           rst_i : in STD_LOGIC;
+           freq_div_o : out STD_LOGIC);
+end component;
+
+component Display7_Segmentos is
+    port ( a_i : in  STD_LOGIC_VECTOR (3 downto 0);  
+           s_i : in  STD_LOGIC_VECTOR (3 downto 0);
+           c_i : in STD_LOGIC;
+           v_i : in STD_LOGIC;
+           op_i : in STD_LOGIC;
+           freq_div_i : in STD_LOGIC; 
+           segments_o : out  STD_LOGIC_VECTOR (7 downto 0));  
+end component;
+
+
+
+signal carry : STD_LOGIC;
+signal verflow : STD_LOGIC;
+signal enable : STD_LOGIC;
+signal salida :STD_LOGIC_VECTOR ( N downto 0);
+
 begin
+
+FullAdder4bits : FullAdderNbits generic map (N => 4 );
+    port map(a_i => a_m_i,
+         b_ini => b_m_i,
+         op_i => op_m_i,
+         c_out => carry,
+         v_o => overflow,
+         s_o => salida);
+
+DivisorFrequencia : DivFreq generic map (N => 500000 );
+    port map( clk_i => clk_m_i,
+           rst_i => rst_m_i,
+           freq_div_o => enable);
+
+Display : Display7_Segmentos
+    port map ( a_i => a_i;
+    			b_i => b_ini;  
+    		    s_i => salida;
+    		    c_i => carry;
+    		    v_i => overflow,
+    		    op_i => op_i,
+    		    freq_div_i => enable,
+    		   	en_o => en_m_o,   
+           	  	leds_n_o : => segments_m_o);
 
 
 end Behavioral;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

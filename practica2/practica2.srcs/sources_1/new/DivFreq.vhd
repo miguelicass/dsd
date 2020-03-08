@@ -43,14 +43,12 @@ signal counter : INTEGER;
 
 begin
 
-
-
 process(clk_i,rst_i) 
     begin
 
       if (rst_i = '1') then 
-        counter <= 0;
-        freq_div_o <= '0';
+          counter <= 0;
+          freq_div_o <= '0';
         
       elsif (clk_i'event and clk_i='1') then    
         if (counter = N-1 ) then 
@@ -62,8 +60,6 @@ process(clk_i,rst_i)
         end if;   
          
      end if;
-
-
 end process;
 
 end Behavioral;

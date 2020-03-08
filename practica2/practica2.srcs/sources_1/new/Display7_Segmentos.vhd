@@ -38,8 +38,9 @@ entity Display7_Segmentos is
             c_i : in STD_LOGIC;
             v_i : in STD_LOGIC;
             op_i : in STD_LOGIC;
-            freq_div_i : in STD_LOGIC;      
-           leds_n_o : out  STD_LOGIC_VECTOR (7 downto 0));  
+            freq_div_i : in STD_LOGIC;
+            en_o : out STD_LOGIC_VECTOR(3 downto 0);      
+            segments_o : out  STD_LOGIC_VECTOR (7 downto 0));  
 end Display7_Segmentos;
 
 architecture Behavioral of Display7_Segmentos is
@@ -47,7 +48,7 @@ architecture Behavioral of Display7_Segmentos is
 begin
 
    with s_i select
-      leds_n_o <= "00000011" when "0000",  -- 0
+      segments_o <= "00000011" when "0000",  -- 0
                   "10011111" when "0001",  -- 1
                   "00100101" when "0010",  -- 2
                   "00001101" when "0011",  -- 3

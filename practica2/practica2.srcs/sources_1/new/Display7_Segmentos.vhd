@@ -49,8 +49,8 @@ architecture Behavioral of Display7_Segmentos is
     
     type state is (display0, display1, display2, display3);
     signal anodo:STD_LOGIC_VECTOR ( 3 downto 0);
-    signal token, next_token : state := disply0;
-    signal led: STD_LOGIC_VECTOR (N-1 downto 0);
+    signal token, next_token : state := display0;
+    signal led: STD_LOGIC_VECTOR (7 downto 0);
 
 
 begin
@@ -115,20 +115,21 @@ begin
 
                    when display3 =>
                         anodo <= "1110";
-                        if op_i = 0   
+                        if op_i = '0'  then 
                               led <= "000"&c_i ;
                         else
                               led <= "000"&v_i ;
                         end if;
-
                         if freq_div_i = '1' then
                            next_token <= display0;                         
                         end if;
 
                    --no es necesario
-                   --when others =>
-                   --    anodo <= "1111";
-                   --    next_state <= display0;
+                   when others =>
+                       anodo <= "1111";
+                       --if freq_div_i = '1' then
+                            next_token <= display0;
+                       --end if;
 
                end case;
        

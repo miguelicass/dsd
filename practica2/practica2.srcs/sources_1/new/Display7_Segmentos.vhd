@@ -38,16 +38,26 @@ entity Display7_Segmentos is
             c_i : in STD_LOGIC;
             v_i : in STD_LOGIC;
             op_i : in STD_LOGIC;
+            clk_i : in STD_LOGIC;
+            rst_i : in STD_LOGIC;
             freq_div_i : in STD_LOGIC;
             en_o : out STD_LOGIC_VECTOR(3 downto 0);      
             segments_o : out  STD_LOGIC_VECTOR (7 downto 0));  
 end Display7_Segmentos;
 
 architecture Behavioral of Display7_Segmentos is
+    
+    type state is (display0, display1, display2, display3);
+    signal anodo:STD_LOGIC_VECTOR ( 3 downto 0);
+    signal token, next_token : state := disply0;
+    signal led: STD_LOGIC_VECTOR (N-1 downto 0);
+
 
 begin
 
-   with s_i select
+   with led select
+   --esto lo tenemos que invertir, el display se activa a nivel alto
+   --solo la habilitacion es a nivel bajo, es decir los anodo
       segments_o <= "00000011" when "0000",  -- 0
                   "10011111" when "0001",  -- 1
                   "00100101" when "0010",  -- 2
@@ -65,5 +75,65 @@ begin
                   "01100001" when "1110",  -- E
                   "01110001" when "1111",  -- F
                   "11111111" when others;  -- blank
+      --end case;
+
+      token_control : process(rst_i, clk_i)
+            begin
+                  if rst_i = '1' then
+                     token <= display0;
+                        
+                  elsif clk_i'event and clk_i = '1' then
+                     token <= next_token;
+                  end if;
+            end process;
+
+       --aunque cambie el token arriba, solo se fera reflejado cuaando el divisor de frecuencia este encendido
+      show_display : process(token, freq_div_i)
+           begin
+               case token is
+
+                   when display0 =>
+                        anodo <= "0111"; 
+                        led <=  a_i;
+                        if freq_div_i = '1' then
+                             next_token <= display1;
+                        end if;
+       
+                   when display1 =>
+                        anodo <= "1011";   
+                        led <=  b_i; 
+                        if freq_div_i = '1' then
+                            next_token <= display2;                                           
+                        end if;
+       
+                   when display2 =>
+                        anodo <= "1101";   
+                        led <=  s_i;
+                        if freq_div_i = '1' then
+                           next_token <= display3;                            
+                        end if;
+
+                   when display3 =>
+                        anodo <= "1110";
+                        if op_i = 0   
+                              led <= "000"&c_i ;
+                        else
+                              led <= "000"&v_i ;
+                        end if;
+
+                        if freq_div_i = '1' then
+                           next_token <= display0;                         
+                        end if;
+
+                   --no es necesario
+                   --when others =>
+                   --    anodo <= "1111";
+                   --    next_state <= display0;
+
+               end case;
+       
+           end process;
+            
+            en_o <= anodo;
 
 end Behavioral;

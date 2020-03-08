@@ -90,7 +90,7 @@ FullAdder4bits : FullAdderNbits generic map (N => 4 )
          v_o => verflow,
          s_o => salida);
 
-DivisorFrequencia : DivFreq generic map (N => 500000 )
+DivisorFrequencia : DivFreq generic map (N => 1000 ) -- 1ms = 1000Hz
     port map( clk_i => clk_m_i,
            rst_i => rst_m_i,
            freq_div_o => enable);
@@ -102,9 +102,11 @@ Display : Display7_Segmentos
     		    c_i => carry,
     		    v_i => verflow,
     		    op_i => op_m_i,
+            clk_i => clk_m_i,
+            rst_i => rst_m_i,
     		    freq_div_i => enable,
     		   	en_o => en_m_o,   
-           	  	segments_o => segments_m_o);
+                segments_o => segments_m_o);
 
 
 end Behavioral;

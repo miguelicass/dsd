@@ -43,6 +43,11 @@ end Manager;
 
 architecture Behavioral of Manager is
 
+component DivFreq is generic (N : INTEGER );--:= 4);
+    port ( clk_i : in STD_LOGIC;
+           rst_i : in STD_LOGIC;
+           freq_div_o : out STD_LOGIC);
+end component;
 
 component FullAdderNbits is generic (N : INTEGER );--:= 4);
     port(a_i : in STD_LOGIC_VECTOR(N-1 downto 0);
@@ -55,24 +60,19 @@ component FullAdderNbits is generic (N : INTEGER );--:= 4);
 end component;
 
 
-component DivFreq is generic (N : INTEGER );--:= 4);
-    port ( clk_i : in STD_LOGIC;
-           rst_i : in STD_LOGIC;
-           freq_div_o : out STD_LOGIC);
-end component;
-
 component Display7_Segmentos is
-    port ( a_i : in  STD_LOGIC_VECTOR (3 downto 0);
-           b_i : in  STD_LOGIC_VECTOR (3 downto 0);  
-           s_i : in  STD_LOGIC_VECTOR (3 downto 0);
-           c_i : in STD_LOGIC;
-           v_i : in STD_LOGIC;
-           op_i : in STD_LOGIC;
-           freq_div_i : in STD_LOGIC;
-           en_o : out STD_LOGIC_VECTOR(3 downto 0); 
-           segments_o : out  STD_LOGIC_VECTOR (7 downto 0));  
+    port (  a_i : in  STD_LOGIC_VECTOR (3 downto 0);  
+            b_i : in  STD_LOGIC_VECTOR (3 downto 0);  
+            s_i : in  STD_LOGIC_VECTOR (3 downto 0);
+            c_i : in STD_LOGIC;
+            v_i : in STD_LOGIC;
+            op_i : in STD_LOGIC;
+            clk_i : in STD_LOGIC;
+            rst_i : in STD_LOGIC;
+            freq_div_i : in STD_LOGIC;
+            en_o : out STD_LOGIC_VECTOR(3 downto 0);      
+            segments_o : out  STD_LOGIC_VECTOR (7 downto 0));  
 end component;
-
 
 
 signal carry : STD_LOGIC;
@@ -82,6 +82,11 @@ signal salida :STD_LOGIC_VECTOR ( N downto 0);
 
 begin
 
+DivisorFrequencia : DivFreq generic map (N => 1000 ) -- 1ms = 1000Hz
+    port map( clk_i => clk_m_i,
+           rst_i => rst_m_i,
+           freq_div_o => enable);
+
 FullAdder4bits : FullAdderNbits generic map (N => 4 )
     port map(a_i => a_m_i,
          b_ini => b_m_i,
@@ -90,10 +95,6 @@ FullAdder4bits : FullAdderNbits generic map (N => 4 )
          v_o => verflow,
          s_o => salida);
 
-DivisorFrequencia : DivFreq generic map (N => 1000 ) -- 1ms = 1000Hz
-    port map( clk_i => clk_m_i,
-           rst_i => rst_m_i,
-           freq_div_o => enable);
 
 Display : Display7_Segmentos
     port map ( a_i => a_m_i,
@@ -102,8 +103,8 @@ Display : Display7_Segmentos
     		    c_i => carry,
     		    v_i => verflow,
     		    op_i => op_m_i,
-            clk_i => clk_m_i,
-            rst_i => rst_m_i,
+                clk_i => clk_m_i,
+                rst_i => rst_m_i,
     		    freq_div_i => enable,
     		   	en_o => en_m_o,   
                 segments_o => segments_m_o);

@@ -67,7 +67,6 @@ begin
 --          c_o => c2_inter,
 --          s_o => s_o(1)
 --          );  
-    
 
 --Asignar op_i a la primera c_inter(j)
 c_inter(0) <= op_i;

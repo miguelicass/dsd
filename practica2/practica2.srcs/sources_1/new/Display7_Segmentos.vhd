@@ -46,35 +46,53 @@ entity Display7_Segmentos is
 end Display7_Segmentos;
 
 architecture Behavioral of Display7_Segmentos is
+        
+    signal led: STD_LOGIC_VECTOR (7 downto 0);
+    signal anodo:STD_LOGIC_VECTOR ( 3 downto 0);
     
     type state is (display0, display1, display2, display3);
-    signal anodo:STD_LOGIC_VECTOR ( 3 downto 0);
     signal token, next_token : state := display0;
-    signal led: STD_LOGIC_VECTOR (7 downto 0);
 
 
 begin
 
    with led select
-   --esto lo tenemos que invertir, el display se activa a nivel alto
-   --solo la habilitacion es a nivel bajo, es decir los anodo
-      segments_o <= "00000011" when "0000",  -- 0
-                  "10011111" when "0001",  -- 1
-                  "00100101" when "0010",  -- 2
-                  "00001101" when "0011",  -- 3
-                  "10011001" when "0100",  -- 4
-                  "01001001" when "0101",  -- 5
-                  "01000001" when "0110",  -- 6
-                  "00011101" when "0111",  -- 7
-                  "00000001" when "1000",  -- 8
-                  "00011001" when "1001",  -- 9
-                  "00010001" when "1010",  -- A
-                  "11000001" when "1011",  -- B
-                  "01100011" when "1100",  -- C
-                  "10000101" when "1101",  -- D
-                  "01100001" when "1110",  -- E
-                  "01110001" when "1111",  -- F
-                  "11111111" when others;  -- blank
+      --se enciende a alto nivel
+      segments_o <= "11111100" when "0000",  -- 0
+--                  "00000011" when "0000",  -- 0
+                  "01100000" when "0001",  -- 1
+--                "10011111" when "0001",  -- 1
+                  "11011010" when "0010",  -- 2
+--                "00100101" when "0010",  -- 2
+                  "11110010" when "0011",  -- 3
+--                "00001101" when "0011",  -- 3
+                  "01100110" when "0100",  -- 4
+--                "10011001" when "0100",  -- 4
+                  "10110110" when "0101",  -- 5
+--                "01001001" when "0101",  -- 5
+                  "10111110" when "0110",  -- 6
+--                "01000001" when "0110",  -- 6
+                  "11100010" when "0111",  -- 7
+--                "00011101" when "0111",  -- 7
+                  "11111110" when "1000",  -- 8
+--                "00000001" when "1000",  -- 8
+                  "11100100" when "1001",  -- 9
+--                "00011011" when "1001",  -- 9
+                  "11101110" when "1010",  -- A
+--                "00010001" when "1010",  -- A
+                  "00111110" when "1011",  -- B
+--                "11000001" when "1011",  -- B
+                  "10011100" when "1100",  -- C
+--                "01100011" when "1100",  -- C
+                  "01111010" when "1101",  -- D
+--                "10000101" when "1101",  -- D
+                  "10011110" when "1110",  -- E
+--                "01100001" when "1110",  -- E
+                  "10001110" when "1111",  -- F
+--                "01110001" when "1111",  -- F
+                  "00000000" when others;  -- blank
+--                "11111111" when others;  -- blank
+
       --end case;
 
       token_control : process(rst_i, clk_i)
@@ -127,9 +145,6 @@ begin
                    --no es necesario
                    when others =>
                        anodo <= "1111";
-                       --if freq_div_i = '1' then
-                            next_token <= display0;
-                       --end if;
 
                end case;
        

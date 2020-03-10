@@ -78,7 +78,7 @@ end component;
 signal carry : STD_LOGIC;
 signal verflow : STD_LOGIC;
 signal enable : STD_LOGIC;
-signal salida :STD_LOGIC_VECTOR ( N downto 0);
+signal salida :STD_LOGIC_VECTOR ( 3 downto 0);
 
 begin
 

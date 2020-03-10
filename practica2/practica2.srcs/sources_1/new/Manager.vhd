@@ -60,7 +60,7 @@ component FullAdderNbits is generic (N : INTEGER );--:= 4);
 end component;
 
 
-component Display7_Segmentos is
+component Display7_Segmentos is generic (N : INTEGER )
     port (  a_i : in  STD_LOGIC_VECTOR (3 downto 0);  
             b_i : in  STD_LOGIC_VECTOR (3 downto 0);  
             s_i : in  STD_LOGIC_VECTOR (3 downto 0);
@@ -96,18 +96,18 @@ FullAdder4bits : FullAdderNbits generic map (N => 4 )
          s_o => salida);
 
 
-Display : Display7_Segmentos
+Display : Display7_Segmentos generic map (N => 6)
     port map ( a_i => a_m_i,
     			b_i => b_m_i,  
     		    s_i => salida,
     		    c_i => carry,
     		    v_i => verflow,
     		    op_i => op_m_i,
-                clk_i => clk_m_i,
-                rst_i => rst_m_i,
+            clk_i => clk_m_i,
+            rst_i => rst_m_i,
     		    freq_div_i => enable,
     		   	en_o => en_m_o,   
-                segments_o => segments_m_o);
+            segments_o => segments_m_o);
 
 
 end Behavioral;

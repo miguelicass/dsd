@@ -31,7 +31,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity Display7_Segmentos is
+entity Display7_Segmentos is generic (N : INTEGER);
     Port (  a_i : in  STD_LOGIC_VECTOR (3 downto 0);  
             b_i : in  STD_LOGIC_VECTOR (3 downto 0);  
             s_i : in  STD_LOGIC_VECTOR (3 downto 0);
@@ -47,109 +47,90 @@ end Display7_Segmentos;
 
 architecture Behavioral of Display7_Segmentos is
         
-    signal led: STD_LOGIC_VECTOR (7 downto 0);
-    signal anodo:STD_LOGIC_VECTOR ( 3 downto 0);
-    
-    type state is (display0, display1, display2, display3);
-    signal token, next_token : state := display0;
+    signal led: STD_LOGIC_VECTOR (3 downto 0);
+    signal anodo:STD_LOGIC_VECTOR ( N-1 downto 0);
+    signal token :  STD_LOGIC_VECTOR (N-1 downto 0) := (0 => '0', others=> '1');
 
 
 begin
 
-   with led select
-      --se enciende a alto nivel
-      segments_o <= "11111100" when "0000",  -- 0
---                  "00000011" when "0000",  -- 0
-                  "01100000" when "0001",  -- 1
---                "10011111" when "0001",  -- 1
-                  "11011010" when "0010",  -- 2
---                "00100101" when "0010",  -- 2
-                  "11110010" when "0011",  -- 3
---                "00001101" when "0011",  -- 3
-                  "01100110" when "0100",  -- 4
---                "10011001" when "0100",  -- 4
-                  "10110110" when "0101",  -- 5
---                "01001001" when "0101",  -- 5
-                  "10111110" when "0110",  -- 6
---                "01000001" when "0110",  -- 6
-                  "11100010" when "0111",  -- 7
---                "00011101" when "0111",  -- 7
-                  "11111110" when "1000",  -- 8
---                "00000001" when "1000",  -- 8
-                  "11100100" when "1001",  -- 9
---                "00011011" when "1001",  -- 9
-                  "11101110" when "1010",  -- A
---                "00010001" when "1010",  -- A
-                  "00111110" when "1011",  -- B
---                "11000001" when "1011",  -- B
-                  "10011100" when "1100",  -- C
---                "01100011" when "1100",  -- C
-                  "01111010" when "1101",  -- D
---                "10000101" when "1101",  -- D
-                  "10011110" when "1110",  -- E
---                "01100001" when "1110",  -- E
-                  "10001110" when "1111",  -- F
---                "01110001" when "1111",  -- F
-                  "00000000" when others;  -- blank
---                "11111111" when others;  -- blank
+ en_o <= AN;
 
-      --end case;
+    process(led)
+    begin
+        case led is
+        when "0000" => segments_o <= "11111100"; --0
+        when "0001" => segments_o <= "01100000"; --1
+        when "0010" => segments_o <= "11011010"; --2
+        when "0011" => segments_o <= "11110010"; --3                  
+        when "0100" => segments_o <= "01100110"; --4
+        when "0101" => segments_o <= "10110110"; --5
+        when "0110" => segments_o <= "10111110"; --6
+        when "0111" => segments_o <= "11100000"; --7
+        when "1000" => segments_o <= "11111110"; --8
+        when "1001" => segments_o <= "11110110"; --9
+        when "1010" => segments_o <= "11111010"; --A
+        when "1011" => segments_o <= "00111110"; --B
+        when "1100" => segments_o <= "10011100"; --C
+        when "1101" => segments_o <= "01111010"; --D
+        when "1110" => segments_o <= "10011110"; --E
+        when "1111" => segments_o <= "10001110"; --F
+        when others => segments_o <= "00000000"; --Blank
+        end case;
+    end process;
 
-      token_control : process(rst_i, clk_i)
+
+      token_old_control : process(rst_i, clk_i)
             begin
                   if rst_i = '1' then
-                     token <= display0;
-                        
+                     token <= '0'&init_token;
+                     
                   elsif clk_i'event and clk_i = '1' then
-                     token <= next_token;
+                     token <= token(0)&token(N-1 downto 1);
+                     
+--                     0111
+--                     1011
+--                     1101
+--                     1110
                   end if;
             end process;
 
-       --aunque cambie el token arriba, solo se fera reflejado cuaando el divisor de frecuencia este encendido
+
+       --aunque cambie el token_old arriba, solo se fera reflejado cuaando el divisor de frecuencia este encendido
       show_display : process(token, freq_div_i)
            begin
-               case token is
-
-                   when display0 =>
-                        anodo <= "0111"; 
-                        led <=  a_i;
-                        if freq_div_i = '1' then
-                             next_token <= display1;
-                        end if;
+            anodo <= token;
+             case token is
+               --En caso de estar en el estado: "digit_0"
+                        --Damos valores a AN[Led de activacion]
+               
+                   when "111110" =>
+                    led <= a_i;
        
-                   when display1 =>
-                        anodo <= "1011";   
-                        led <=  b_i; 
-                        if freq_div_i = '1' then
-                            next_token <= display2;                                           
-                        end if;
+                   when "111101" =>
+                    led <= b_i
        
-                   when display2 =>
-                        anodo <= "1101";   
-                        led <=  s_i;
-                        if freq_div_i = '1' then
-                           next_token <= display3;                            
-                        end if;
+                   when "111011" =>
+                    led <= "000"&op_i
 
-                   when display3 =>
-                        anodo <= "1110";
-                        if op_i = '0'  then 
-                              led <= "000"&c_i ;
-                        else
-                              led <= "000"&v_i ;
-                        end if;
-                        if freq_div_i = '1' then
-                           next_token <= display0;                         
-                        end if;
+                   when "110111" =>
+                    led <=  s_in;
 
-                   --no es necesario
+                   when "101111" =>
+                    led <= "000"&c_i
+
+                   when "011111" =>
+                    led <= "000"&v_i
+
                    when others =>
-                       anodo <= "1111";
-
+                    led <= "1111"
+       
                end case;
+             
        
            end process;
-            
-            en_o <= anodo;
+
+ -- en_o <= anodo;
+ 
 
 end Behavioral;

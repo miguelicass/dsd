@@ -41,7 +41,7 @@ entity Display7_Segmentos is generic (N : INTEGER );
             clk_i : in STD_LOGIC;
             rst_i : in STD_LOGIC;
             freq_div_i : in STD_LOGIC;
-            en_o : out STD_LOGIC_VECTOR(N-1 downto 0);      
+            en_o : out STD_LOGIC_VECTOR(7 downto 0);      
             segments_o : out  STD_LOGIC_VECTOR (7 downto 0));  
 end Display7_Segmentos;
 
@@ -54,7 +54,7 @@ architecture Behavioral of Display7_Segmentos is
 
 begin
 
- en_o <= anodo;
+ en_o <= "11"&anodo;
 
     process(led)
     begin
@@ -79,28 +79,21 @@ begin
         end case;
     end process;
 
-
-      token_old_control : process(rst_i, clk_i)
+      token_control : process(rst_i, clk_i)
             begin
                   if rst_i = '1' then
                      token <= init_token;
                      
-                  elsif clk_i'event and clk_i = '1' then
+                  elsif clk_i'event and clk_i = '1' and freq_div_i = '1' then
                      token <= token(0)&token(N-1 downto 1);
-                     
---                     0111
---                     1011
---                     1101
---                     1110
                   end if;
             end process;
 
-
-       --aunque cambie el token_old arriba, solo se fera reflejado cuaando el divisor de frecuencia este encendido
-      show_display : process(token, freq_div_i)
+      show_display_led : process(token)
+      
            begin
             anodo <= token;
-             
+             --el orden real es hacia arriba
              case token is
                
                    when "111110" =>
@@ -125,11 +118,7 @@ begin
                     led <= "1111";
        
                end case;
-             
        
-           end process;
-
- -- en_o <= anodo;
- 
+           end process; 
 
 end Behavioral;

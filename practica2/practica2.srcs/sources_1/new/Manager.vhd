@@ -37,7 +37,7 @@ entity Manager is generic (N : integer := 4);
            a_m_i : inout STD_LOGIC_VECTOR(N-1 downto 0);
            b_m_i : inout STD_LOGIC_VECTOR(N-1 downto 0);
            op_m_i : in STD_LOGIC;
-           en_m_o : out STD_LOGIC_VECTOR(3 downto 0);
+           en_m_o : out STD_LOGIC_VECTOR(7 downto 0);
            segments_m_o : out  STD_LOGIC_VECTOR (7 downto 0)); 
 end Manager;
 
@@ -70,7 +70,7 @@ component Display7_Segmentos is generic (N : INTEGER );
             clk_i : in STD_LOGIC;
             rst_i : in STD_LOGIC;
             freq_div_i : in STD_LOGIC;
-            en_o : out STD_LOGIC_VECTOR(3 downto 0);      
+            en_o : out STD_LOGIC_VECTOR(7 downto 0);      
             segments_o : out  STD_LOGIC_VECTOR (7 downto 0));  
 end component;
 
@@ -103,11 +103,11 @@ Display : Display7_Segmentos generic map (N => 6)
     		    c_i => carry,
     		    v_i => verflow,
     		    op_i => op_m_i,
-            clk_i => clk_m_i,
-            rst_i => rst_m_i,
+                clk_i => clk_m_i,
+                rst_i => rst_m_i,
     		    freq_div_i => enable,
     		   	en_o => en_m_o,   
-            segments_o => segments_m_o);
+                segments_o => segments_m_o);
 
 
 end Behavioral;

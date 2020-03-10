@@ -60,7 +60,7 @@ component FullAdderNbits is generic (N : INTEGER );--:= 4);
 end component;
 
 
-component Display7_Segmentos is generic (N : INTEGER )
+component Display7_Segmentos is generic (N : INTEGER );
     port (  a_i : in  STD_LOGIC_VECTOR (3 downto 0);  
             b_i : in  STD_LOGIC_VECTOR (3 downto 0);  
             s_i : in  STD_LOGIC_VECTOR (3 downto 0);

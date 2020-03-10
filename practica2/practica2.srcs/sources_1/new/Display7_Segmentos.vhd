@@ -31,7 +31,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity Display7_Segmentos is generic (N : INTEGER);
+entity Display7_Segmentos is generic (N : INTEGER );
     Port (  a_i : in  STD_LOGIC_VECTOR (3 downto 0);  
             b_i : in  STD_LOGIC_VECTOR (3 downto 0);  
             s_i : in  STD_LOGIC_VECTOR (3 downto 0);
@@ -41,7 +41,7 @@ entity Display7_Segmentos is generic (N : INTEGER);
             clk_i : in STD_LOGIC;
             rst_i : in STD_LOGIC;
             freq_div_i : in STD_LOGIC;
-            en_o : out STD_LOGIC_VECTOR(3 downto 0);      
+            en_o : out STD_LOGIC_VECTOR(N-1 downto 0);      
             segments_o : out  STD_LOGIC_VECTOR (7 downto 0));  
 end Display7_Segmentos;
 
@@ -50,11 +50,11 @@ architecture Behavioral of Display7_Segmentos is
     signal led: STD_LOGIC_VECTOR (3 downto 0);
     signal anodo:STD_LOGIC_VECTOR ( N-1 downto 0);
     signal token :  STD_LOGIC_VECTOR (N-1 downto 0) := (0 => '0', others=> '1');
-
+    signal init_token :  STD_LOGIC_VECTOR (N-1 downto 0) := (0 => '0', others=> '1');
 
 begin
 
- en_o <= AN;
+ en_o <= anodo;
 
     process(led)
     begin
@@ -83,7 +83,7 @@ begin
       token_old_control : process(rst_i, clk_i)
             begin
                   if rst_i = '1' then
-                     token <= '0'&init_token;
+                     token <= init_token;
                      
                   elsif clk_i'event and clk_i = '1' then
                      token <= token(0)&token(N-1 downto 1);
@@ -100,30 +100,29 @@ begin
       show_display : process(token, freq_div_i)
            begin
             anodo <= token;
+             
              case token is
-               --En caso de estar en el estado: "digit_0"
-                        --Damos valores a AN[Led de activacion]
                
                    when "111110" =>
                     led <= a_i;
        
                    when "111101" =>
-                    led <= b_i
+                    led <= b_i;
        
                    when "111011" =>
-                    led <= "000"&op_i
+                    led <= "000"&op_i;
 
                    when "110111" =>
-                    led <=  s_in;
+                    led <=  s_i;
 
                    when "101111" =>
-                    led <= "000"&c_i
+                    led <= "000"&c_i;
 
                    when "011111" =>
-                    led <= "000"&v_i
+                    led <= "000"&v_i;
 
                    when others =>
-                    led <= "1111"
+                    led <= "1111";
        
                end case;
              

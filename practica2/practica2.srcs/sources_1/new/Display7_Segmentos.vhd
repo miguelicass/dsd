@@ -31,7 +31,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity Display7_Segmentos is generic (N : INTEGER );
+entity Display7_Segmentos is generic (N : INTEGER ); -- N = 6
     Port (  a_i : in  STD_LOGIC_VECTOR (3 downto 0);  
             b_i : in  STD_LOGIC_VECTOR (3 downto 0);  
             s_i : in  STD_LOGIC_VECTOR (3 downto 0);

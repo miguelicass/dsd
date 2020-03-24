@@ -1,0 +1,12 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../practica2.srcs/sources_1/new/Display7_Segmentos.vhd" \
+"../../../../practica2.srcs/sources_1/new/DivFreq.vhd" \
+"../../../../practica2.srcs/sources_1/new/FullAdder.vhd" \
+"../../../../practica2.srcs/sources_1/new/FullAdderNbits.vhd" \
+"../../../../practica2.srcs/sources_1/new/HalfAdder.vhd" \
+"../../../../practica2.srcs/sources_1/new/Manager.vhd" \
+"../../../../practica2.srcs/sim_1/new/Manager_tb.vhd" \
+
+# Do not sort compile order
+nosort

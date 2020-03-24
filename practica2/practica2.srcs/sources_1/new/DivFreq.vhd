@@ -39,7 +39,7 @@ end DivFreq;
 
 architecture Behavioral of DivFreq is
  
-signal counter : INTEGER;
+signal counter : INTEGER := 0;
 
 begin
 

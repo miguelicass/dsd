@@ -1,6 +1,6 @@
 Vivado Simulator 2019.2
 Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
-Running: /home/miguelan/Escritorio/VivadoWS/Vivado/2019.2/bin/unwrapped/lnx64.o/xelab -wto 52a881550d2b435a9ddc3781f449babf --incr --debug typical --relax --mt 8 -L xil_defaultlib -L secureip --snapshot Display7_Segmentos_tb_behav xil_defaultlib.Display7_Segmentos_tb -log elaborate.log 
+Running: /home/miguelan/Escritorio/VivadoWS/Vivado/2019.2/bin/unwrapped/lnx64.o/xelab -wto 52a881550d2b435a9ddc3781f449babf --incr --debug typical --relax --mt 8 -L xil_defaultlib -L secureip --snapshot Manager_tb_behav xil_defaultlib.Manager_tb -log elaborate.log 
 Using 8 slave threads.
 Starting static elaboration
 Completed static elaboration
@@ -10,6 +10,11 @@ Time Resolution for simulation is 1ps
 Compiling package std.standard
 Compiling package std.textio
 Compiling package ieee.std_logic_1164
+Compiling architecture behavioral of entity xil_defaultlib.DivFreq [\DivFreq(n=1000000)\]
+Compiling architecture behavioral of entity xil_defaultlib.HalfAdder [halfadder_default]
+Compiling architecture behavioral of entity xil_defaultlib.FullAdder [fulladder_default]
+Compiling architecture behavioral of entity xil_defaultlib.FullAdderNbits [\FullAdderNbits(n=4)\]
 Compiling architecture behavioral of entity xil_defaultlib.Display7_Segmentos [\Display7_Segmentos(n=6)\]
-Compiling architecture behavioral of entity xil_defaultlib.display7_segmentos_tb
-Built simulation snapshot Display7_Segmentos_tb_behav
+Compiling architecture behavioral of entity xil_defaultlib.Manager [\Manager(n=4)\]
+Compiling architecture behavioral of entity xil_defaultlib.manager_tb
+Built simulation snapshot Manager_tb_behav

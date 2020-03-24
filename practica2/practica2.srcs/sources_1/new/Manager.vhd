@@ -31,11 +31,11 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity Manager is generic (N : integer := 4);
+entity Manager is generic (N : integer ); --:= 4);
     Port ( clk_m_i : in STD_LOGIC;
            rst_m_i : in STD_LOGIC;
-           a_m_i : inout STD_LOGIC_VECTOR(N-1 downto 0);
-           b_m_i : inout STD_LOGIC_VECTOR(N-1 downto 0);
+           a_m_i : in STD_LOGIC_VECTOR(N-1 downto 0);
+           b_m_i : in STD_LOGIC_VECTOR(N-1 downto 0);
            op_m_i : in STD_LOGIC;
            en_m_o : out STD_LOGIC_VECTOR(7 downto 0);
            segments_m_o : out  STD_LOGIC_VECTOR (7 downto 0)); 
@@ -74,7 +74,8 @@ component Display7_Segmentos is generic (N : INTEGER );
             segments_o : out  STD_LOGIC_VECTOR (7 downto 0));  
 end component;
 
-
+--signal a : STD_LOGIC;
+--signal b : STD_LOGIC;
 signal carry : STD_LOGIC;
 signal verflow : STD_LOGIC;
 signal enable : STD_LOGIC;
@@ -82,7 +83,7 @@ signal salida :STD_LOGIC_VECTOR ( 3 downto 0);
 
 begin
 
-DivisorFrequencia : DivFreq generic map (N => 1000000 ) -- 10ms = 10000Hz // clk => 10 ns
+DivisorFrequencia : DivFreq generic map (N => 1000000 )-- probar con 5 para sim -- 10ms = 10000Hz // clk => 10 ns
     port map( clk_i => clk_m_i,
            rst_i => rst_m_i,
            freq_div_o => enable);

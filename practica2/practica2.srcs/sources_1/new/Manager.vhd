@@ -82,7 +82,7 @@ signal salida :STD_LOGIC_VECTOR ( 3 downto 0);
 
 begin
 
-DivisorFrequencia : DivFreq generic map (N => 1000 ) -- 1ms = 1000Hz
+DivisorFrequencia : DivFreq generic map (N => 1000000 ) -- 10ms = 10000Hz // clk => 10 ns
     port map( clk_i => clk_m_i,
            rst_i => rst_m_i,
            freq_div_o => enable);

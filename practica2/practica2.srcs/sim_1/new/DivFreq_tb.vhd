@@ -49,7 +49,7 @@ signal reset   : std_logic := '0';
 -- Outputs
 signal clk_out : std_logic;
 
-constant clk_period : time := 20 ns; 
+constant clk_period : time := 10 ns; 
 
 begin
  

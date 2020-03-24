@@ -44,6 +44,7 @@ component Display7_Segmentos is
     s_i : in  STD_LOGIC_VECTOR (3 downto 0);
     c_i : in STD_LOGIC;
     v_i : in STD_LOGIC;
+    op_i : in STD_LOGIC;
     clk_i : in STD_LOGIC;
     rst_i : in STD_LOGIC;
     freq_div_i : in STD_LOGIC;
@@ -51,35 +52,39 @@ component Display7_Segmentos is
     segments_o : out  STD_LOGIC_VECTOR (7 downto 0));  
     end component;
 
-    --inputs
-   signal clk : std_logic := '0';
+   --inputs
    signal a : std_logic_vector(3 downto 0) := (others => '0');
    signal b : std_logic_vector(3 downto 0) := (others => '0');
    signal s : std_logic_vector(3 downto 0) := (others => '0');
-   signal c : std_logic;
-   signal v : std_logic;
-   signal enable : STD_LOGIC_VECTOR(7 downto 0);
-   signal reset   : std_logic := '0';
+   signal op : STD_LOGIC := '0';
+   signal c : std_logic := '0';
+   signal v : std_logic := '0';
+   signal clk : STD_LOGIC := '0';
+   signal rst : STD_LOGIC := '0';
+   signal freq_div : STD_LOGIC := '0';
    
-
    --outputs
-   signal segment7 : std_logic_vector(7 downto 0);
-   constant clk_period : time := 1 ns;
-   signal clk_out : std_logic;
+   signal en : STD_LOGIC_VECTOR(7 downto 0);
+   signal segments : STD_LOGIC_VECTOR(7 downto 0);
+   
+   --constante
+   constant clk_period : time := 10 ns;
+
 
 BEGIN
     --Arreglar variables de entrada, frecuencia, displays etc...
-   uut: Display7_Segmentos generic map (N=>6)
+   uut: Display7_Segmentos generic map (N => 6)
     PORT MAP ( a_i => a,
                 b_i => b,
                 s_i => s,
                 c_i => c,
                 v_i => v,
                 clk_i => clk,
-                rst_i => reset,
-                freq_div_i  => clk_out,
-                en_o => enable,
-                segments_o => segment7);
+                op_i => op,
+                rst_i => rst,
+                freq_div_i  => freq_div,
+                en_o => en,
+                segments_o => segments);
         
         
    clk_process :process
@@ -87,50 +92,61 @@ BEGIN
                 clk <= '0';
                wait for clk_period/2;
                 clk <= '1';
-                wait for clk_period/2;
+               wait for clk_period/2;
    end process;      
+   
+   clk_enable :process
+   begin
+                freq_div <= '0';
+               wait for clk_period * 5; -- El numero real seria => 1000000, para que fuera cada 10ms
+                                        -- Ponemos un numero mas reducido para que todos quepan en el time
+                freq_div <= '1';
+               wait for clk_period;
+   end process;      
+   
    stim_proc: process
    begin                
    a <= "0000";
    b <= "0000";
    s <= "0000";
-   wait for 100 ns;
+   
+   wait for 10 ns;
    a <= "0001";
    b <= "0001";
-   s <= "0001";
-   wait for 100 ns;
-   a <= "0010";
-   b <= "0010";
    s <= "0010";
-   wait for 100 ns;
-   a <= "0011";
-   b <= "0011";
+--   op <= '0';
+--   c <= '0';
+--   v <= '0';
+   
+   wait for 500 ns;
+   a <= "0010";
+   b <= "0001";
+   s <= "1111";
+   op <= '0';
+   c <= '0';
+   v <= '0';
+   
+      wait for 500 ns;
+   a <= "1111";
+   b <= "0001";
    s <= "0011";
-   wait for 100 ns;
-   a <= "0100";
-   b <= "0100";
-   s <= "0100";
-   wait for 100 ns;
-   a <= "0101";
-   b <= "0101";
-   s <= "0101";
-   wait for 100 ns;
-   a <= "0110";
-   b <= "0110";
-   s <= "0110";
-   wait for 100 ns;
-   a <= "0111";
+   op <= '0';
+   c <= '1';
+   v <= '0';
+   
+   wait for 500 ns;
+   a <= "1111";
    b <= "0111";
-   s <= "0111";
-   wait for 100 ns;
-   a <= "1000";
-   b <= "1000";
    s <= "1000";
-   wait for 100 ns;
-   a <= "1001";
-   b <= "1001";
-   s <= "1001";
-   wait for 100 ns;
+   c <= '0';
+   v <= '0';
+   
+      wait for 500 ns;
+   a <= "0001";
+   b <= "0010";
+   s <= "1111";
+   c <= '0';
+   v <= '1';
    
    end process;
 

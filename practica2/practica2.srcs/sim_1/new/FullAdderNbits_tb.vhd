@@ -32,14 +32,14 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity FullAdderNbits_tb is
-generic (N : integer :=4);
+generic (N : integer := 4);
 --  Port ( );
 end FullAdderNbits_tb;
 
 architecture Behavioral of FullAdderNbits_tb is
 
-component FullAdderNbits
-port(a_i : in STD_LOGIC_VECTOR(N-1 downto 0);
+component FullAdderNbits is generic (N : INTEGER );
+port(a_i : in STD_LOGIC_VECTOR(N-1 downto 0) ;
      b_ini : in STD_LOGIC_VECTOR(N-1 downto 0);
      op_i : in STD_LOGIC;
      c_out : out STD_LOGIC;
@@ -49,17 +49,18 @@ port(a_i : in STD_LOGIC_VECTOR(N-1 downto 0);
 end component;
 --entradas
 signal a : STD_LOGIC_VECTOR (N-1 downto 0);
---------------a(0)<= '0';
 signal b : STD_LOGIC_VECTOR(N-1 downto 0);
---------------b(0)<= '0';
 signal op_entrada : STD_LOGIC := '0';
+
 --salidas
 signal s : STD_LOGIC_VECTOR(N-1 downto 0);
 signal c_salida : STD_LOGIC;
 signal v_salida : STD_LOGIC;
 --signal baux : STD_LOGIC_VECTOR(3 downto 0);
+
 begin
-uut: FullAdderNbits
+
+uut: FullAdderNbits generic map (N => 4 )
 port map(
      a_i => a,
      b_ini => b,
@@ -68,7 +69,6 @@ port map(
      v_o => v_salida,
      s_o =>s
      );
-
 
 stim_proc: process
 begin

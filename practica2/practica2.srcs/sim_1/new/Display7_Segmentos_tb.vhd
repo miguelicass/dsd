@@ -98,8 +98,8 @@ BEGIN
    clk_enable :process
    begin
                 freq_div <= '0';
-               wait for clk_period * 5; -- El numero real seria => 1000000, para que fuera cada 10ms
-                                        -- Ponemos un numero mas reducido para que todos quepan en el time
+               wait for (clk_period * 5)-clk_period; -- El numero real seria => 1000000, para que fuera cada 10ms
+                                        -- Ponemos un numero  mas reducido, 5, para que todos quepan en el time
                 freq_div <= '1';
                wait for clk_period;
    end process;      
@@ -110,7 +110,7 @@ BEGIN
    b <= "0000";
    s <= "0000";
    
-   wait for 10 ns;
+   wait for 100 ns;
    a <= "0001";
    b <= "0001";
    s <= "0010";
@@ -118,7 +118,7 @@ BEGIN
 --   c <= '0';
 --   v <= '0';
    
-   wait for 500 ns;
+   wait for 450 ns;
    a <= "0010";
    b <= "0001";
    s <= "1111";
@@ -126,7 +126,7 @@ BEGIN
    c <= '0';
    v <= '0';
    
-      wait for 500 ns;
+   wait for 450 ns;
    a <= "1111";
    b <= "0001";
    s <= "0011";
@@ -134,20 +134,22 @@ BEGIN
    c <= '1';
    v <= '0';
    
-   wait for 500 ns;
+   wait for 450 ns;
    a <= "1111";
    b <= "0111";
    s <= "1000";
    c <= '0';
    v <= '0';
    
-      wait for 500 ns;
+   wait for 450 ns;
    a <= "0001";
    b <= "0010";
    s <= "1111";
    c <= '0';
    v <= '1';
-   
+   wait for 450 ns;
+
+
    end process;
 
 END;

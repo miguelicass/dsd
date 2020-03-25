@@ -1,0 +1,4 @@
+Running: xsim.dir/ComportamentalAddSub_tb_behav/xsimk -simmode gui -wdb ComportamentalAddSub_tb_behav.wdb -simrunnum 0 -socket 58301
+Design successfully loaded
+Design Loading Memory Usage: 43968 KB (Peak: 44088 KB)
+Design Loading CPU Usage: 10 ms

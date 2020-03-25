@@ -1,6 +1,6 @@
 webtalk_init -webtalk_dir /home/miguelan/Escritorio/dsd/practica2/practica2.sim/sim_1/behav/xsim/xsim.dir/Manager_tb_behav/webtalk/
 webtalk_register_client -client project
-webtalk_add_data -client project -key date_generated -value "Wed Mar 25 00:41:35 2020" -context "software_version_and_target_device"
+webtalk_add_data -client project -key date_generated -value "Wed Mar 25 16:12:44 2020" -context "software_version_and_target_device"
 webtalk_add_data -client project -key product_version -value "XSIM v2019.2 (64-bit)" -context "software_version_and_target_device"
 webtalk_add_data -client project -key build_version -value "2708876" -context "software_version_and_target_device"
 webtalk_add_data -client project -key os_platform -value "LIN64" -context "software_version_and_target_device"
@@ -14,7 +14,7 @@ webtalk_add_data -client project -key target_package -value "not_applicable" -co
 webtalk_add_data -client project -key target_speed -value "not_applicable" -context "software_version_and_target_device"
 webtalk_add_data -client project -key random_id -value "b3d857a7-d0cd-4121-848a-144876ce72c5" -context "software_version_and_target_device"
 webtalk_add_data -client project -key project_id -value "52a881550d2b435a9ddc3781f449babf" -context "software_version_and_target_device"
-webtalk_add_data -client project -key project_iteration -value "23" -context "software_version_and_target_device"
+webtalk_add_data -client project -key project_iteration -value "24" -context "software_version_and_target_device"
 webtalk_add_data -client project -key os_name -value "Ubuntu" -context "user_environment"
 webtalk_add_data -client project -key os_release -value "Ubuntu 18.04.3 LTS" -context "user_environment"
 webtalk_add_data -client project -key cpu_name -value "Intel(R) Core(TM) i5-5257U CPU @ 2.70GHz" -context "user_environment"
@@ -36,7 +36,7 @@ webtalk_add_data -client xsim -key Total_Nets -value "0" -context "xsim\\usage"
 webtalk_add_data -client xsim -key Total_Processes -value "34" -context "xsim\\usage"
 webtalk_add_data -client xsim -key Total_Instances -value "20" -context "xsim\\usage"
 webtalk_add_data -client xsim -key Xilinx_HDL_Libraries_Used -value "secureip " -context "xsim\\usage"
-webtalk_add_data -client xsim -key Compiler_Time -value "1.47_sec" -context "xsim\\usage"
-webtalk_add_data -client xsim -key Compiler_Memory -value "223712_KB" -context "xsim\\usage"
-webtalk_transmit -clientid 1963544220 -regid "" -xml /home/miguelan/Escritorio/dsd/practica2/practica2.sim/sim_1/behav/xsim/xsim.dir/Manager_tb_behav/webtalk/usage_statistics_ext_xsim.xml -html /home/miguelan/Escritorio/dsd/practica2/practica2.sim/sim_1/behav/xsim/xsim.dir/Manager_tb_behav/webtalk/usage_statistics_ext_xsim.html -wdm /home/miguelan/Escritorio/dsd/practica2/practica2.sim/sim_1/behav/xsim/xsim.dir/Manager_tb_behav/webtalk/usage_statistics_ext_xsim.wdm -intro "<H3>XSIM Usage Report</H3><BR>"
+webtalk_add_data -client xsim -key Compiler_Time -value "1.45_sec" -context "xsim\\usage"
+webtalk_add_data -client xsim -key Compiler_Memory -value "223848_KB" -context "xsim\\usage"
+webtalk_transmit -clientid 1340145881 -regid "" -xml /home/miguelan/Escritorio/dsd/practica2/practica2.sim/sim_1/behav/xsim/xsim.dir/Manager_tb_behav/webtalk/usage_statistics_ext_xsim.xml -html /home/miguelan/Escritorio/dsd/practica2/practica2.sim/sim_1/behav/xsim/xsim.dir/Manager_tb_behav/webtalk/usage_statistics_ext_xsim.html -wdm /home/miguelan/Escritorio/dsd/practica2/practica2.sim/sim_1/behav/xsim/xsim.dir/Manager_tb_behav/webtalk/usage_statistics_ext_xsim.wdm -intro "<H3>XSIM Usage Report</H3><BR>"
 webtalk_terminate

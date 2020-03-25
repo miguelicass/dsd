@@ -31,7 +31,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity Manager is generic (N : integer ); --:= 4);
+entity Manager is generic (N : integer := 4);
     Port ( clk_m_i : in STD_LOGIC;
            rst_m_i : in STD_LOGIC;
            a_m_i : in STD_LOGIC_VECTOR(N-1 downto 0);

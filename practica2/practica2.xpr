@@ -189,7 +189,6 @@
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
-          <Attr Name="UsedInSteps" Val="synth_1;SYNTH_DESIGN;TCL.POST"/>
         </FileInfo>
       </File>
       <File Path="$PSRCDIR/utils_1/imports/.logs/ImplLogBackup.tcl">
@@ -199,7 +198,6 @@
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
-          <Attr Name="UsedInSteps" Val="impl_1;ROUTE_DESIGN;TCL.POST"/>
         </FileInfo>
       </File>
       <File Path="$PSRCDIR/utils_1/imports/.logs/BitsLogBackup.tcl">
@@ -209,7 +207,6 @@
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
-          <Attr Name="UsedInSteps" Val="impl_1;WRITE_BITSTREAM;TCL.POST"/>
         </FileInfo>
       </File>
       <Config>
@@ -245,7 +242,7 @@
     <Run Id="synth_1" Type="Ft3:Synth" SrcSet="sources_1" Part="xc7a100tcsg324-1" ConstrsSet="constrs_1" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" State="current" Dir="$PRUNDIR/synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
-        <Step Id="synth_design" PostStepTclHook="$PSRCDIR/utils_1/imports/.logs/SynthLogBackup.tcl"/>
+        <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
@@ -261,9 +258,9 @@
         <Step Id="place_design"/>
         <Step Id="post_place_power_opt_design"/>
         <Step Id="phys_opt_design" EnableStepBool="1"/>
-        <Step Id="route_design" PostStepTclHook="$PSRCDIR/utils_1/imports/.logs/ImplLogBackup.tcl"/>
+        <Step Id="route_design"/>
         <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream" PostStepTclHook="$PSRCDIR/utils_1/imports/.logs/BitsLogBackup.tcl"/>
+        <Step Id="write_bitstream"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>

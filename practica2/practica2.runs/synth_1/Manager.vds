@@ -1,0 +1,344 @@
+#-----------------------------------------------------------
+# Vivado v2019.2 (64-bit)
+# SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+# IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
+# Start of session at: Wed Mar 25 22:55:56 2020
+# Process ID: 5251
+# Current directory: /home/miguelan/Escritorio/dsd/practica2/practica2.runs/synth_1
+# Command line: vivado -log Manager.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source Manager.tcl
+# Log file: /home/miguelan/Escritorio/dsd/practica2/practica2.runs/synth_1/Manager.vds
+# Journal file: /home/miguelan/Escritorio/dsd/practica2/practica2.runs/synth_1/vivado.jou
+#-----------------------------------------------------------
+source Manager.tcl -notrace
+Command: synth_design -top Manager -part xc7a100tcsg324-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: [Device 21-403] Loading part xc7a100tcsg324-1
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 5292 
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:18 . Memory (MB): peak = 1902.559 ; gain = 202.715 ; free physical = 145 ; free virtual = 1078
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'Manager' [/home/miguelan/Escritorio/dsd/practica2/practica2.srcs/sources_1/new/Manager.vhd:44]
+	Parameter N bound to: 4 - type: integer 
+	Parameter N bound to: 1000000 - type: integer 
+INFO: [Synth 8-3491] module 'DivFreq' declared at '/home/miguelan/Escritorio/dsd/practica2/practica2.srcs/sources_1/new/DivFreq.vhd:34' bound to instance 'DivisorFrequencia' of component 'DivFreq' [/home/miguelan/Escritorio/dsd/practica2/practica2.srcs/sources_1/new/Manager.vhd:86]
+INFO: [Synth 8-638] synthesizing module 'DivFreq' [/home/miguelan/Escritorio/dsd/practica2/practica2.srcs/sources_1/new/DivFreq.vhd:40]
+	Parameter N bound to: 1000000 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'DivFreq' (1#1) [/home/miguelan/Escritorio/dsd/practica2/practica2.srcs/sources_1/new/DivFreq.vhd:40]
+	Parameter N bound to: 4 - type: integer 
+INFO: [Synth 8-3491] module 'FullAdderNbits' declared at '/home/miguelan/Escritorio/dsd/practica2/practica2.srcs/sources_1/new/FullAdderNbits.vhd:34' bound to instance 'FullAdder4bits' of component 'FullAdderNbits' [/home/miguelan/Escritorio/dsd/practica2/practica2.srcs/sources_1/new/Manager.vhd:91]
+INFO: [Synth 8-638] synthesizing module 'FullAdderNbits' [/home/miguelan/Escritorio/dsd/practica2/practica2.srcs/sources_1/new/FullAdderNbits.vhd:44]
+	Parameter N bound to: 4 - type: integer 
+INFO: [Synth 8-3491] module 'FullAdder' declared at '/home/miguelan/Escritorio/dsd/practica2/practica2.srcs/sources_1/new/FullAdder.vhd:34' bound to instance 'FA' of component 'FullAdder' [/home/miguelan/Escritorio/dsd/practica2/practica2.srcs/sources_1/new/FullAdderNbits.vhd:78]
+INFO: [Synth 8-638] synthesizing module 'FullAdder' [/home/miguelan/Escritorio/dsd/practica2/practica2.srcs/sources_1/new/FullAdder.vhd:42]
+INFO: [Synth 8-3491] module 'HalfAdder' declared at '/home/miguelan/Escritorio/dsd/practica2/practica2.srcs/sources_1/new/HalfAdder.vhd:34' bound to instance 'HalfAdder1' of component 'HalfAdder' [/home/miguelan/Escritorio/dsd/practica2/practica2.srcs/sources_1/new/FullAdder.vhd:55]
+INFO: [Synth 8-638] synthesizing module 'HalfAdder' [/home/miguelan/Escritorio/dsd/practica2/practica2.srcs/sources_1/new/HalfAdder.vhd:41]
+INFO: [Synth 8-256] done synthesizing module 'HalfAdder' (2#1) [/home/miguelan/Escritorio/dsd/practica2/practica2.srcs/sources_1/new/HalfAdder.vhd:41]
+INFO: [Synth 8-3491] module 'HalfAdder' declared at '/home/miguelan/Escritorio/dsd/practica2/practica2.srcs/sources_1/new/HalfAdder.vhd:34' bound to instance 'HalfAdder2' of component 'HalfAdder' [/home/miguelan/Escritorio/dsd/practica2/practica2.srcs/sources_1/new/FullAdder.vhd:62]
+INFO: [Synth 8-256] done synthesizing module 'FullAdder' (3#1) [/home/miguelan/Escritorio/dsd/practica2/practica2.srcs/sources_1/new/FullAdder.vhd:42]
+INFO: [Synth 8-3491] module 'FullAdder' declared at '/home/miguelan/Escritorio/dsd/practica2/practica2.srcs/sources_1/new/FullAdder.vhd:34' bound to instance 'FA' of component 'FullAdder' [/home/miguelan/Escritorio/dsd/practica2/practica2.srcs/sources_1/new/FullAdderNbits.vhd:78]
+INFO: [Synth 8-3491] module 'FullAdder' declared at '/home/miguelan/Escritorio/dsd/practica2/practica2.srcs/sources_1/new/FullAdder.vhd:34' bound to instance 'FA' of component 'FullAdder' [/home/miguelan/Escritorio/dsd/practica2/practica2.srcs/sources_1/new/FullAdderNbits.vhd:78]
+INFO: [Synth 8-3491] module 'FullAdder' declared at '/home/miguelan/Escritorio/dsd/practica2/practica2.srcs/sources_1/new/FullAdder.vhd:34' bound to instance 'FA' of component 'FullAdder' [/home/miguelan/Escritorio/dsd/practica2/practica2.srcs/sources_1/new/FullAdderNbits.vhd:78]
+INFO: [Synth 8-256] done synthesizing module 'FullAdderNbits' (4#1) [/home/miguelan/Escritorio/dsd/practica2/practica2.srcs/sources_1/new/FullAdderNbits.vhd:44]
+	Parameter N bound to: 6 - type: integer 
+INFO: [Synth 8-3491] module 'Display7_Segmentos' declared at '/home/miguelan/Escritorio/dsd/practica2/practica2.srcs/sources_1/new/Display7_Segmentos.vhd:34' bound to instance 'Display' of component 'Display7_Segmentos' [/home/miguelan/Escritorio/dsd/practica2/practica2.srcs/sources_1/new/Manager.vhd:100]
+INFO: [Synth 8-638] synthesizing module 'Display7_Segmentos' [/home/miguelan/Escritorio/dsd/practica2/practica2.srcs/sources_1/new/Display7_Segmentos.vhd:48]
+	Parameter N bound to: 6 - type: integer 
+INFO: [Synth 8-226] default block is never used [/home/miguelan/Escritorio/dsd/practica2/practica2.srcs/sources_1/new/Display7_Segmentos.vhd:61]
+WARNING: [Synth 8-614] signal 'init_token' is read in the process but is not in the sensitivity list [/home/miguelan/Escritorio/dsd/practica2/practica2.srcs/sources_1/new/Display7_Segmentos.vhd:82]
+WARNING: [Synth 8-614] signal 'freq_div_i' is read in the process but is not in the sensitivity list [/home/miguelan/Escritorio/dsd/practica2/practica2.srcs/sources_1/new/Display7_Segmentos.vhd:82]
+WARNING: [Synth 8-614] signal 'a_i' is read in the process but is not in the sensitivity list [/home/miguelan/Escritorio/dsd/practica2/practica2.srcs/sources_1/new/Display7_Segmentos.vhd:92]
+WARNING: [Synth 8-614] signal 'b_i' is read in the process but is not in the sensitivity list [/home/miguelan/Escritorio/dsd/practica2/practica2.srcs/sources_1/new/Display7_Segmentos.vhd:92]
+WARNING: [Synth 8-614] signal 'op_i' is read in the process but is not in the sensitivity list [/home/miguelan/Escritorio/dsd/practica2/practica2.srcs/sources_1/new/Display7_Segmentos.vhd:92]
+WARNING: [Synth 8-614] signal 's_i' is read in the process but is not in the sensitivity list [/home/miguelan/Escritorio/dsd/practica2/practica2.srcs/sources_1/new/Display7_Segmentos.vhd:92]
+WARNING: [Synth 8-614] signal 'c_i' is read in the process but is not in the sensitivity list [/home/miguelan/Escritorio/dsd/practica2/practica2.srcs/sources_1/new/Display7_Segmentos.vhd:92]
+WARNING: [Synth 8-614] signal 'v_i' is read in the process but is not in the sensitivity list [/home/miguelan/Escritorio/dsd/practica2/practica2.srcs/sources_1/new/Display7_Segmentos.vhd:92]
+INFO: [Synth 8-256] done synthesizing module 'Display7_Segmentos' (5#1) [/home/miguelan/Escritorio/dsd/practica2/practica2.srcs/sources_1/new/Display7_Segmentos.vhd:48]
+INFO: [Synth 8-256] done synthesizing module 'Manager' (6#1) [/home/miguelan/Escritorio/dsd/practica2/practica2.srcs/sources_1/new/Manager.vhd:44]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:20 . Memory (MB): peak = 1964.309 ; gain = 264.465 ; free physical = 161 ; free virtual = 1112
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:08 ; elapsed = 00:00:21 . Memory (MB): peak = 1967.277 ; gain = 267.434 ; free physical = 143 ; free virtual = 1106
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:21 . Memory (MB): peak = 1967.277 ; gain = 267.434 ; free physical = 143 ; free virtual = 1106
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 1967.277 ; gain = 0.000 ; free physical = 124 ; free virtual = 1099
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [/home/miguelan/Escritorio/dsd/practica2/practica2.srcs/constrs_1/new/NexysA7-100T.xdc]
+Finished Parsing XDC File [/home/miguelan/Escritorio/dsd/practica2/practica2.srcs/constrs_1/new/NexysA7-100T.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/miguelan/Escritorio/dsd/practica2/practica2.srcs/constrs_1/new/NexysA7-100T.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/Manager_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/Manager_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2054.000 ; gain = 0.000 ; free physical = 71 ; free virtual = 1015
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2054.000 ; gain = 0.000 ; free physical = 70 ; free virtual = 1015
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:15 ; elapsed = 00:00:33 . Memory (MB): peak = 2054.000 ; gain = 354.156 ; free physical = 109 ; free virtual = 1079
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a100tcsg324-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:15 ; elapsed = 00:00:33 . Memory (MB): peak = 2054.000 ; gain = 354.156 ; free physical = 109 ; free virtual = 1080
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:15 ; elapsed = 00:00:33 . Memory (MB): peak = 2054.000 ; gain = 354.156 ; free physical = 109 ; free virtual = 1080
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:16 ; elapsed = 00:00:34 . Memory (MB): peak = 2054.000 ; gain = 354.156 ; free physical = 97 ; free virtual = 1072
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 1     
++---XORs : 
+	   2 Input      1 Bit         XORs := 13    
++---Registers : 
+	               32 Bit    Registers := 1     
+	                6 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 1     
+	   7 Input      4 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module DivFreq 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 1     
+Module HalfAdder 
+Detailed RTL Component Info : 
++---XORs : 
+	   2 Input      1 Bit         XORs := 1     
+Module FullAdderNbits 
+Detailed RTL Component Info : 
++---XORs : 
+	   2 Input      1 Bit         XORs := 5     
+Module Display7_Segmentos 
+Detailed RTL Component Info : 
++---Registers : 
+	                6 Bit    Registers := 1     
++---Muxes : 
+	   7 Input      4 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 240 (col length:80)
+BRAMs: 270 (col length: RAMB18 80 RAMB36 40)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+Warning: Parallel synthesis criteria is not met 
+WARNING: [Synth 8-3917] design Manager has port en_m_o[7] driven by constant 1
+WARNING: [Synth 8-3917] design Manager has port en_m_o[6] driven by constant 1
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:19 ; elapsed = 00:00:37 . Memory (MB): peak = 2054.000 ; gain = 354.156 ; free physical = 94 ; free virtual = 1060
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:27 ; elapsed = 00:00:49 . Memory (MB): peak = 2054.000 ; gain = 354.156 ; free physical = 82 ; free virtual = 939
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:27 ; elapsed = 00:00:49 . Memory (MB): peak = 2054.000 ; gain = 354.156 ; free physical = 91 ; free virtual = 936
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:27 ; elapsed = 00:00:49 . Memory (MB): peak = 2054.000 ; gain = 354.156 ; free physical = 92 ; free virtual = 937
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:32 ; elapsed = 00:00:54 . Memory (MB): peak = 2056.969 ; gain = 357.125 ; free physical = 92 ; free virtual = 938
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:32 ; elapsed = 00:00:54 . Memory (MB): peak = 2056.969 ; gain = 357.125 ; free physical = 92 ; free virtual = 938
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:32 ; elapsed = 00:00:54 . Memory (MB): peak = 2056.969 ; gain = 357.125 ; free physical = 92 ; free virtual = 938
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:32 ; elapsed = 00:00:54 . Memory (MB): peak = 2056.969 ; gain = 357.125 ; free physical = 92 ; free virtual = 938
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:32 ; elapsed = 00:00:54 . Memory (MB): peak = 2056.969 ; gain = 357.125 ; free physical = 92 ; free virtual = 938
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:32 ; elapsed = 00:00:54 . Memory (MB): peak = 2056.969 ; gain = 357.125 ; free physical = 92 ; free virtual = 938
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |BUFG   |     1|
+|2     |CARRY4 |     8|
+|3     |LUT1   |     1|
+|4     |LUT2   |     1|
+|5     |LUT3   |     2|
+|6     |LUT4   |     7|
+|7     |LUT5   |    38|
+|8     |LUT6   |    18|
+|9     |FDCE   |    34|
+|10    |FDPE   |     5|
+|11    |IBUF   |    11|
+|12    |OBUF   |    16|
++------+-------+------+
+
+Report Instance Areas: 
++------+--------------------+-------------------+------+
+|      |Instance            |Module             |Cells |
++------+--------------------+-------------------+------+
+|1     |top                 |                   |   142|
+|2     |  Display           |Display7_Segmentos |    29|
+|3     |  DivisorFrequencia |DivFreq            |    82|
++------+--------------------+-------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:32 ; elapsed = 00:00:54 . Memory (MB): peak = 2056.969 ; gain = 357.125 ; free physical = 92 ; free virtual = 938
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 2 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:30 ; elapsed = 00:00:51 . Memory (MB): peak = 2056.969 ; gain = 270.402 ; free physical = 142 ; free virtual = 988
+Synthesis Optimization Complete : Time (s): cpu = 00:00:32 ; elapsed = 00:00:54 . Memory (MB): peak = 2056.977 ; gain = 357.125 ; free physical = 142 ; free virtual = 989
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2056.977 ; gain = 0.000 ; free physical = 69 ; free virtual = 983
+INFO: [Netlist 29-17] Analyzing 8 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2063.906 ; gain = 0.000 ; free physical = 88 ; free virtual = 1006
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+34 Infos, 10 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:43 ; elapsed = 00:01:08 . Memory (MB): peak = 2063.906 ; gain = 624.012 ; free physical = 219 ; free virtual = 1138
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2063.906 ; gain = 0.000 ; free physical = 219 ; free virtual = 1139
+WARNING: [Constraints 18-5210] No constraints selected for write.
+Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
+INFO: [Common 17-1381] The checkpoint '/home/miguelan/Escritorio/dsd/practica2/practica2.runs/synth_1/Manager.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file Manager_utilization_synth.rpt -pb Manager_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Wed Mar 25 22:57:25 2020...

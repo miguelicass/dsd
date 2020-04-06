@@ -1,7 +1,7 @@
 # Practicas DSD
 
-# Miguel Ángel Castaño
-# Eva santoja
+Miguel Ángel Castaño
+Eva santoja
 
 Práctica 2 – Descripción estructural y comportamental de sistemas digitales | FullAdder&Subtracto N bits - 7 segment display
 

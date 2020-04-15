@@ -41,11 +41,11 @@ end Manager0s1sROM;
 architecture Behavioral of Manager0s1sROM is
 
 --components
-component DivFreq is generic (N : INTEGER );--:= 4);
-    port ( clk_i : in STD_LOGIC;
-           rst_i : in STD_LOGIC;
-           freq_div_o : out STD_LOGIC);
-end component;
+--component DivFreq is generic (N : INTEGER );--:= 4);
+--    port ( clk_i : in STD_LOGIC;
+--           rst_i : in STD_LOGIC;
+--           freq_div_o : out STD_LOGIC);
+--end component;
 
 component ROM is
     Port ( a_i : in STD_LOGIC_VECTOR (3 downto 0);
@@ -55,7 +55,7 @@ end component;
 component Contador_Johnson is generic (N : INTEGER );--:= 3);
 port( clk_i : in std_logic;
 	  rst_i: in std_logic;
-	  en_i : in std_logic;
+	  --en_i : in std_logic;
 	  l_i : in std_logic;
 	  c_i : in std_logic;
 	  --data_i : in std_logic_vector(N-1 downto 0);
@@ -64,7 +64,7 @@ port( clk_i : in std_logic;
 end component;
 
 --signal auxiliares
-signal enable : STD_LOGIC;
+--signal enable : STD_LOGIC;
 signal q : STD_LOGIC_VECTOR ( 2 downto 0);
 signal a : STD_LOGIC_VECTOR ( 3 downto 0);
 signal d : STD_LOGIC_VECTOR ( 4 downto 0);
@@ -72,10 +72,10 @@ signal d : STD_LOGIC_VECTOR ( 4 downto 0);
 
 begin
 
-	DivisorFrequencia : DivFreq generic map (N => 5 )-- probar con 5 para sim -- 10ms = 10000Hz // clk => 10 ns // N => 1000000
-    port map( clk_i => clk_m_i,
-           rst_i => rst_m_i,
-           freq_div_o => enable);
+--	DivisorFrequencia : DivFreq generic map (N => 2 )-- probar con 2 para sim -- 1Hz  clk => 10 ns, N => 100000000
+--    port map( clk_i => clk_m_i,
+--           rst_i => rst_m_i,
+--           freq_div_o => enable);
 
     memory : ROM 
     port map (
@@ -87,7 +87,7 @@ begin
     port map (
         rst_i => clk_m_i,
         clk_i => rst_m_i,
-        en_i => enable,
+        --en_i => enable,
         l_i => d(4), 
         c_i => d(3),
         --data_i => ,

@@ -43,8 +43,11 @@ architecture Behavioral of MooreFSM_tb is
                e_i : in STD_LOGIC;
                s_o : out STD_LOGIC);
     end component;
-
+    
+    --inputs
     signal clk, rst, e : STD_LOGIC := '0';
+    
+    --outputs
     signal s : STD_LOGIC;
     
 begin
@@ -99,8 +102,6 @@ begin
         
         e <= '1';
         wait for 20 ns;
-        
-        
         
         wait;
     end process;

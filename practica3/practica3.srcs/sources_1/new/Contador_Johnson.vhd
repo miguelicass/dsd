@@ -34,7 +34,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity Contador_Johnson is generic (N : INTEGER );--:= 3);
 port( clk_i : in std_logic;
 	  rst_i: in std_logic;
-	  en_i : in std_logic;
+	 --en_i : in std_logic;
 	  l_i : in std_logic;
 	  c_i : in std_logic;
 	  --data_i : in std_logic_vector(N-1 downto 0);
@@ -47,12 +47,12 @@ architecture Behavioral of Contador_Johnson is
 signal data :  STD_LOGIC_VECTOR (N-1 downto 0) := (others => '0');
 
 begin
-    process(clk_i, rst_i, en_i)
+    process(clk_i, rst_i) --,en_i)
     begin
     	if (rst_i='1') then
             data<= (others => '0');
 
-        elsif clk_i'event and clk_i = '1' and en_i = '1' then
+        elsif clk_i'event and clk_i = '1' then --and en_i = '1' then
 
             if (l_i = '0') then
                 if(c_i='0') then

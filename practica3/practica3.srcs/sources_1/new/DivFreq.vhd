@@ -31,7 +31,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity DivFreq is generic (N : INTEGER );--:= 4);
+entity DivFreq is generic (N : INTEGER );--:= 2);
     port ( clk_i : in STD_LOGIC;
            rst_i : in STD_LOGIC;
            freq_div_o : out STD_LOGIC);

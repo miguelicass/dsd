@@ -1,0 +1,9 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../practica3.srcs/sources_1/new/Contador_Johnson.vhd" \
+"../../../../practica3.srcs/sources_1/new/Manager0s1sROM.vhd" \
+"../../../../practica3.srcs/sources_1/new/ROM.vhd" \
+"../../../../practica3.srcs/sim_1/new/Manager0s1sROM_tb.vhd" \
+
+# Do not sort compile order
+nosort

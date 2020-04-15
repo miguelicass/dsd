@@ -50,9 +50,6 @@ signal clk, rst, e : STD_LOGIC := '0';
 --outputs
 signal s : STD_LOGIC;
 
-----test enable
---signal en : std_logic := '0';
---constant clk_period : time:= 10 ns;
 
 begin
 
@@ -66,16 +63,6 @@ begin
     --clock
     clk <= not clk after 5 ns;
     
-    
---  --test enable
---  clk_enable :process
---   begin
---                en <= '0';
---               wait for (clk_period * 2)-clk_period; -- El numero real seria => 1000000, para que fuera cada 10ms
---                                        -- Ponemos un numero  mas reducido, 5, para que todos quepan en el time
---                en <= '1';
---               wait for clk_period;
---   end process;  
  
     process
     begin

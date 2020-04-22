@@ -2,11 +2,11 @@
 # Webtalk v2019.2 (64-bit)
 # SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
 # IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
-# Start of session at: Wed Apr 15 16:29:22 2020
-# Process ID: 26441
+# Start of session at: Wed Apr 22 18:57:41 2020
+# Process ID: 30415
 # Current directory: /home/miguelan/Escritorio/dsd/practica3/practica3.sim/sim_1/behav/xsim
-# Command line: wbtcv -mode batch -source /home/miguelan/Escritorio/dsd/practica3/practica3.sim/sim_1/behav/xsim/xsim.dir/Contador_Johnson_tb_behav/webtalk/xsim_webtalk.tcl -notrace
+# Command line: wbtcv -mode batch -source /home/miguelan/Escritorio/dsd/practica3/practica3.sim/sim_1/behav/xsim/xsim.dir/Manager0s1sROM_tb_behav/webtalk/xsim_webtalk.tcl -notrace
 # Log file: /home/miguelan/Escritorio/dsd/practica3/practica3.sim/sim_1/behav/xsim/webtalk.log
 # Journal file: /home/miguelan/Escritorio/dsd/practica3/practica3.sim/sim_1/behav/xsim/webtalk.jou
 #-----------------------------------------------------------
-source /home/miguelan/Escritorio/dsd/practica3/practica3.sim/sim_1/behav/xsim/xsim.dir/Contador_Johnson_tb_behav/webtalk/xsim_webtalk.tcl -notrace
+source /home/miguelan/Escritorio/dsd/practica3/practica3.sim/sim_1/behav/xsim/xsim.dir/Manager0s1sROM_tb_behav/webtalk/xsim_webtalk.tcl -notrace

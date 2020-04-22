@@ -32,8 +32,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity Manager0s1sROM is
-    Port ( rst_m_i : in STD_LOGIC;
-           clk_m_i : in STD_LOGIC;
+    Port ( clk_m_i : in STD_LOGIC;
+           rst_m_i : in STD_LOGIC;
     	   e_m_i : in STD_LOGIC;
     	   s_m_o : out STD_LOGIC);
 end Manager0s1sROM;
@@ -41,7 +41,7 @@ end Manager0s1sROM;
 architecture Behavioral of Manager0s1sROM is
 
 --components
-component DivFreq is generic (N : INTEGER );--:= 4);
+component DivFreq is generic (N : INTEGER );
     port ( clk_i : in STD_LOGIC;
            rst_i : in STD_LOGIC;
            freq_div_o : out STD_LOGIC);
@@ -72,7 +72,8 @@ signal d : STD_LOGIC_VECTOR ( 4 downto 0);
 
 begin
 
-	DivisorFrequencia : DivFreq generic map (N => 2 )-- probar con 2 para sim -- 1Hz  clk => 10 ns, N => 100000000
+	DivisorFrequencia : DivFreq generic map (N => 100000000 )--1Hz => 1000000000 ns // clk => 10 ns, N => 100000000
+	
     port map( clk_i => clk_m_i,
            rst_i => rst_m_i,
            freq_div_o => enable);
@@ -86,16 +87,19 @@ begin
     generic map (N => 3) 
     port map (clk_i => clk_m_i,
               rst_i => rst_m_i,
-              en_i => '1', --enable, --para simular lo ponemos a 1
+              en_i => enable, --para simular lo ponemos a '1'
               l_i => d(4), 
               c_i => d(3),
               --data_i => ,
               data_parallel_i => d( 2 downto 0),
               q_o => q);
     
+    --entrada ROM
     a <= e_m_i & q;
     
-    --S    =       /Q2          /Q1      Q0      +   Q2       Q1           /Q0
-    s_m_o <= ( not q(2) and not q(1) and q(0) ) or ( q(2) and q(1) and not q(0) ) ;
+    --salida
+    --S = /Q1 Q0  +  Q1 /Q0				
+    s_m_o <= (not q(1) and q(0)) or (q(1) and not q(0));
+
 
 end Behavioral;
